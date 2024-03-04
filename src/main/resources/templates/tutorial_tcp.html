@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>可回放拖放示例</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+
+
+
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .step {
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            text-align: center;
+        }
+        .decision {
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            text-align: center;
+        }
+        .arrow {
+            text-align: center;
+            margin: -10px 0;
+        }
+        .arrow::before {
+            content: '↓';
+            font-size: 20px;
+        }
+        .branch-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .branch {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="lesson">
+    <h1>Lesson: TCP</h1>
+    <p>Oops! It looks like the restaurant telephone broke! Since you are too broke to hire someone, you have to fix it yourself. On further examination, it looks like the telephone is unable to make calls. So, you must reprogram the telephone to make and take calls again. To do that, you must learn how phone calls work:</p>
+    <ol>
+        <li>The caller must dial the recipient's number and wait for them to pick up, which will establish a direct line of communication between them.</li>
+        <li>When one person speaks, the other listens and acknowledges their understanding by responding.</li>
+        <li>If someone is speaking too quickly, or they cut off due to network issues or background noises, the other will ask them to repeat themselves.</li>
+        <li>When both parties are done talking, they will agree to hang up.</li>
+    </ol>
+    <p>When a client communicates with a server for web pages and other information, they use the TCP protocol, which allows for reliable and connection-based communication. To establish a TCP connection:</p>
+    <ol>
+        <li>The client and server engage in a three-way handshake. First, the client indicates to the server that it wants to connect. Then, the server responds by acknowledging that request. Finally, the client acknowledges the response and a connection has been established.</li>
+        <li>During communication, TCP ensures reliable communication by using acknowledgement packets to confirm that messages have been delivered.</li>
+        <li>If data is being transmitted too quickly, or the network is congested, TCP will restrict transmission rates to ensure reliability.</li>
+        <li>When server and client are done communicating, the TCP connection is terminated by mutual agreement.</li>
+    </ol>
+</div>
+<div class="container mt-5">
+    <div class="container mt-5">
+        <h1 class="text-center">Lesson: TCP</h1>
+        <div class="row lesson-container">
+            <!-- Drag Sources -->
+            <div class="col-4">
+                <div id="origin" class="bg-light border p-3">
+                    <div id="drag1" draggable="true" ondragstart="drag(event)" class="bg-primary text-white p-2 drag-item">
+                        <!-- Code Block 1: TCP Three-Way Handshake -->
+                        <div class="code-block">
+                            <p>TCP Three-Way Handshake:</p>
+                            <code>
+                                Client sends SYN<br>
+                                Server responds with SYN-ACK<br>
+                                Client sends ACK to acknowledge<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div id="drag2" draggable="true" ondragstart="drag(event)" class="bg-success text-white p-2 drag-item">
+                        <!-- Code Block 2: Reliable Communication -->
+                        <div class="code-block">
+                            <p>Reliable Communication:</p>
+                            <code>
+                                TCP ensures reliable data delivery through acknowledgment packets<br>
+                                Retransmission of lost packets if necessary<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div id="drag3" draggable="true" ondragstart="drag(event)" class="bg-info text-white p-2 drag-item">
+                        <!-- Code Block 3: Congestion Control -->
+                        <div class="code-block">
+                            <p>Congestion Control:</p>
+                            <code>
+                                TCP adjusts transmission rate based on network congestion<br>
+                                Slows down transmission to avoid packet loss<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div id="drag4" draggable="true" ondragstart="drag(event)" class="bg-secondary text-white p-2 drag-item">
+                        <!-- Code Block 4: Connection Termination -->
+                        <div class="code-block">
+                            <p>Connection Termination:</p>
+                            <code>
+                                Client or server initiates connection termination with FIN packet<br>
+                                Other party acknowledges with ACK<br>
+                                Finally, the connection is closed<br>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Drop Targets -->
+            <div class="col-8">
+                <div id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)" class="bg-light border p-3 drop-area">
+                    <h4>Three-Way Handshake</h4>
+                    <p>Sequence of steps to establish a TCP connection.</p>
+                </div>
+                <div id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)" class="bg-light border p-3 drop-area">
+                    <h4>Reliable Communication</h4>
+                    <p>Ensuring data delivery and integrity through acknowledgment and retransmission.</p>
+                </div>
+                <div id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)" class="bg-light border p-3 drop-area">
+                    <h4>Congestion Control</h4>
+                    <p>Adapting transmission rates to prevent network congestion and packet loss.</p>
+                </div>
+                <div id="drop4" ondrop="drop(event)" ondragover="allowDrop(event)" class="bg-light border p-3 drop-area">
+                    <h4>Connection Termination</h4>
+                    <p>Gracefully closing the TCP connection after communication.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Success and Failure Messages -->
+<!--        <div id="successMessage" style="display: none; margin-top: 20px;" class="alert alert-success text-center">-->
+<!--            You Passed the Test!-->
+<!--        </div>-->
+        <div id="successMessage" style="display: none; margin-top: 20px;" class="alert alert-success animated fadeIn">
+            You Passed the Test!
+        </div>
+        <video id="videoPlayer" style="display: none;" width="640" height="360" controls>
+            <source src="templates/tutorial.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <style>
+            /* Add animation classes */
+            /*@keyframes fadeIn {*/
+            /*    from { opacity: 0; }*/
+            /*    to { opacity: 1; }*/
+            /*}*/
+
+            /*.animated {*/
+            /*    animation-duration: 1s;*/
+            /*    animation-fill-mode: both;*/
+            /*}*/
+
+            /*.fadeIn {*/
+            /*    animation-name: fadeIn;*/
+            /*}*/
+
+            /* Animation for success message */
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            .success-animation {
+                animation: fadeIn 1s forwards;
+                opacity: 0;
+            }
+
+        </style>
+
+        <div id="failureMessage" style="display: none; margin-top: 20px;" class="alert alert-danger text-center">
+            Code writing failed, please check whether the drag and drop position is correct.
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="static/css/bootstrap.css"></script>
+</body>
+</html>
+
+
+
+<script>
+
+
+    const placementTracker = {
+        'drag1': false,
+        'drag2': false,
+        'drag3': false,
+        'drag4': false
+    };
+
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedElement = document.getElementById(data);
+        var dropTarget = ev.target;
+
+        // 检查放置目标是否为放置区域本身或已放置的文本框
+        if (dropTarget.className.includes('bg-light') || dropTarget.className.includes('text-white')) {
+            // 如果目标是放置区域或文本框的父级是放置区域，则添加元素
+            if (dropTarget.className.includes('bg-light')) {
+                dropTarget.appendChild(draggedElement);
+                // 更新拖动元素的放置状态
+                updatePlacementTracker(draggedElement.id, dropTarget.id);
+            } else {
+                // 如果目标是文本框，则找到其父级放置区域，并添加元素
+                var parentDropArea = dropTarget.closest('.bg-light');
+                if (parentDropArea) {
+                    parentDropArea.appendChild(draggedElement);
+                    // 更新拖动元素的放置状态
+                    updatePlacementTracker(draggedElement.id, parentDropArea.id);
+                }
+            }
+        } else if (dropTarget.id === "origin") {
+            // 如果目标是原始位置，则直接放回
+            dropTarget.appendChild(draggedElement);
+            // 如果元素被拖回起始位置，更新其状态为未放置
+            placementTracker[draggedElement.id] = false;
+        }
+    }
+
+    function updatePlacementTracker(draggedId, dropTargetId) {
+        // 根据拖动元素和放置区域的ID更新状态
+        if ((draggedId === 'drag1' && dropTargetId === 'drop1') ||
+            (draggedId === 'drag2' && dropTargetId === 'drop2') ||
+            (draggedId === 'drag3' && dropTargetId === 'drop3') ||
+            (draggedId === 'drag4' && dropTargetId === 'drop4')) {
+            placementTracker[draggedId] = true;
+        } else {
+            placementTracker[draggedId] = false;
+        }
+
+        // 检查所有元素是否都被正确放置
+        checkAllPlacedCorrectly();
+    }
+
+    function checkAllPlacedCorrectly() {
+        var successMessage = document.getElementById('successMessage');
+        if (placementTracker.drag1 && placementTracker.drag2 && placementTracker.drag3 && placementTracker.drag4) {
+            alert('You passed the test!');
+            successMessage.style.display = 'block';
+            failureMessage.style.display = 'none';
+            videoPlayer.style.display = 'block';
+            videoPlayer.play();
+        } else {
+            // 如果不满足，确保消息不显示
+            successMessage.style.display = 'none';
+            failureMessage.style.display = 'block';
+        }
+    }
+
+    function allowDrop(ev) {
+        ev.preventDefault(); // 允许放置
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id); // 指定拖动数据
+    }
+
+
+
+    // function drop(ev) {
+    //     ev.preventDefault();
+    //     var data = ev.dataTransfer.getData("text");
+    //     var draggedElement = document.getElementById(data);
+    //     var dropTarget = ev.target;
+    //
+    //     // 检查放置目标是否为放置区域本身或已放置的文本框
+    //     if (dropTarget.className.includes('bg-light') || dropTarget.className.includes('text-white')) {
+    //         // 如果目标是放置区域或文本框的父级是放置区域，则添加元素
+    //         if (dropTarget.className.includes('bg-light')) {
+    //             dropTarget.appendChild(draggedElement);
+    //         } else {
+    //             // 如果目标是文本框，则找到其父级放置区域，并添加元素
+    //             var parentDropArea = dropTarget.closest('.bg-light');
+    //             if (parentDropArea) {
+    //                 parentDropArea.appendChild(draggedElement);
+    //             }
+    //         }
+    //     } else if (dropTarget.id === "origin") {
+    //         // 如果目标是原始位置，则直接放回
+    //         dropTarget.appendChild(draggedElement);
+    //     }
+    // }
+    // Wait for the DOM to be fully loaded
+
+
+
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

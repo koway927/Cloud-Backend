@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Protocol Tutorial</title>
+    <style>
+        /* 添加CSS样式 */
+    </style>
+</head>
+<body>
+
+<div id="client" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p>Drag a request to the server:</p>
+    <div id="getRequest" draggable="true" ondragstart="drag(event)">GET Request</div>
+    <div id="postRequest" draggable="true" ondragstart="drag(event)">POST Request</div>
+</div>
+
+<div id="server" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p>Server area</p>
+</div>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var serverArea = document.getElementById("server");
+        // 根据拖动的请求类型，服务器显示不同的响应
+        if (data === "getRequest") {
+            serverArea.innerHTML += "<p>200 OK</p>";
+        } else if (data === "postRequest") {
+            serverArea.innerHTML += "<p>201 Created</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
