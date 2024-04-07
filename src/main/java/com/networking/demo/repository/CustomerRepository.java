@@ -1,7 +1,7 @@
 package com.networking.demo.repository;
 
 
-import com.networking.demo.entity.CustomerEntity;
+import com.networking.demo.entity.LearnerEntity;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.ListCrudRepository;
@@ -9,16 +9,16 @@ import org.springframework.data.repository.ListCrudRepository;
 import java.util.List;
 
 
-public interface CustomerRepository extends ListCrudRepository<CustomerEntity, Long> {
+public interface CustomerRepository extends ListCrudRepository<LearnerEntity, Long> {
 
 
-    List<CustomerEntity> findByFirstName(String firstName);
+    List<LearnerEntity> findByFirstName(String firstName);
 
 
-    List<CustomerEntity> findByLastName(String lastName);
+    List<LearnerEntity> findByLastName(String lastName);
 
 
-    CustomerEntity findByEmail(String email);
+    LearnerEntity findByEmail(String email);
 
 
     @Modifying

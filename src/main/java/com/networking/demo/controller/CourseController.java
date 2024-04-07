@@ -1,11 +1,11 @@
 package com.networking.demo.controller;
 
 
-import com.networking.demo.entity.CustomerEntity;
+import com.networking.demo.entity.LearnerEntity;
 import com.networking.demo.model.AddToCartBody;
 import com.networking.demo.model.CourseDto;
 import com.networking.demo.service.CourseService;
-import com.networking.demo.service.CustomerService;
+import com.networking.demo.service.LearnerService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,34 +19,34 @@ public class CourseController {
 
 
     private final CourseService courseService;
-    private final CustomerService customerService;
+    private final LearnerService learnerService;
 
 
     public CourseController(
             CourseService courseService,
-            CustomerService customerService) {
+            LearnerService learnerService) {
         this.courseService = courseService;
-        this.customerService = customerService;
+        this.learnerService = learnerService;
     }
 
 
     @GetMapping("/cart")
     public CourseDto getCart(@AuthenticationPrincipal User user) {
-        CustomerEntity customer = customerService.getCustomerByEmail(user.getUsername());
+        LearnerEntity customer = learnerService.getCustomerByEmail(user.getUsername());
         return courseService.getCart(customer.id());
     }
 
 
     @PostMapping("/cart")
     public void addToCart(@AuthenticationPrincipal User user, @RequestBody AddToCartBody body) {
-        CustomerEntity customer = customerService.getCustomerByEmail(user.getUsername());
+        LearnerEntity customer = learnerService.getCustomerByEmail(user.getUsername());
         courseService.addMenuItemToCart(customer.id(), body.menuId());
     }
 
 
     @PostMapping("/cart/checkout")
     public void checkout(@AuthenticationPrincipal User user) {
-        CustomerEntity customer = customerService.getCustomerByEmail(user.getUsername());
+        LearnerEntity customer = learnerService.getCustomerByEmail(user.getUsername());
         courseService.clearCart(customer.id());
     }
 }

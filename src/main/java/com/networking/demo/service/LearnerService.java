@@ -2,7 +2,7 @@ package com.networking.demo.service;
 
 
 import com.networking.demo.entity.CourseEntity;
-import com.networking.demo.entity.CustomerEntity;
+import com.networking.demo.entity.LearnerEntity;
 import com.networking.demo.repository.CartRepository;
 import com.networking.demo.repository.CustomerRepository;
 import org.springframework.security.core.userdetails.User;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class CustomerService {
+public class LearnerService {
 
 
     private final CartRepository cartRepository;
@@ -23,7 +23,7 @@ public class CustomerService {
     private final UserDetailsManager userDetailsManager;
 
 
-    public CustomerService(
+    public LearnerService(
             CartRepository cartRepository,
             CustomerRepository customerRepository,
             PasswordEncoder passwordEncoder,
@@ -47,13 +47,13 @@ public class CustomerService {
         customerRepository.updateNameByEmail(email, firstName, lastName);
 
 
-        CustomerEntity savedCustomer = customerRepository.findByEmail(email);
+        LearnerEntity savedCustomer = customerRepository.findByEmail(email);
         CourseEntity cart = new CourseEntity(null, savedCustomer.id(), 0.0);
         cartRepository.save(cart);
     }
 
 
-    public CustomerEntity getCustomerByEmail(String email) {
+    public LearnerEntity getCustomerByEmail(String email) {
         return customerRepository.findByEmail(email);
     }
 }

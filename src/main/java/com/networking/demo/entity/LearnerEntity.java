@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 
 @Table("customers")
-public record CustomerEntity(
+public record LearnerEntity(
         @Id Long id,
         String email,
         String password,

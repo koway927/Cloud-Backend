@@ -2,19 +2,18 @@ package com.networking.demo.controller;
 
 
 import com.networking.demo.model.RegisterBody;
-import com.networking.demo.service.CustomerService;
-import com.networking.demo.service.UserService;
+import com.networking.demo.service.LearnerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-public class CustomerController {
-    private final CustomerService customerService;
+public class LearnerController {
+    private final LearnerService learnerService;
 
 
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    public LearnerController(LearnerService learnerService) {
+        this.learnerService = learnerService;
     }
 
     private final int test_variable = 8;
@@ -26,6 +25,6 @@ public class CustomerController {
     @PostMapping("/SignUp")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void signUp(@RequestBody RegisterBody body) {
-        customerService.signUp(body.email(), body.password(), body.firstName(), body.lastName());
+        learnerService.signUp(body.email(), body.password(), body.firstName(), body.lastName());
     }
 }
