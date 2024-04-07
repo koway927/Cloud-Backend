@@ -2,9 +2,9 @@ package com.networking.demo.controller;
 
 
 import com.networking.demo.entity.MenuItemEntity;
-import com.networking.demo.model.RestaurantDto;
+import com.networking.demo.model.PlatformDto;
 import com.networking.demo.service.MenuItemService;
-import com.networking.demo.service.RestaurantService;
+import com.networking.demo.service.PlatformService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +16,12 @@ import java.util.List;
 public class MenuController {
 
 
-    private final RestaurantService restaurantService;
+    private final PlatformService platformService;
     private final MenuItemService menuItemService;
 
 
-    public MenuController(RestaurantService restaurantService, MenuItemService menuItemService) {
-        this.restaurantService = restaurantService;
+    public MenuController(PlatformService platformService, MenuItemService menuItemService) {
+        this.platformService = platformService;
         this.menuItemService = menuItemService;
     }
 
@@ -33,7 +33,7 @@ public class MenuController {
 
 
     @GetMapping("/restaurants/menu")
-    public List<RestaurantDto> getMenuForAllRestaurants() {
-        return restaurantService.getRestaurants();
+    public List<PlatformDto> getMenuForAllRestaurants() {
+        return platformService.getRestaurants();
     }
 }

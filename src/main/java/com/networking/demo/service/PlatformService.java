@@ -2,9 +2,9 @@ package com.networking.demo.service;
 
 
 import com.networking.demo.entity.MenuItemEntity;
-import com.networking.demo.entity.RestaurantEntity;
+import com.networking.demo.entity.PlatformEntity;
 import com.networking.demo.model.MenuItemDto;
-import com.networking.demo.model.RestaurantDto;
+import com.networking.demo.model.PlatformDto;
 import com.networking.demo.repository.MenuItemRepository;
 import com.networking.demo.repository.RestaurantRepository;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,21 +17,21 @@ import java.util.Map;
 
 
 @Service
-public class RestaurantService {
+public class PlatformService {
 
 
     private final MenuItemRepository menuItemRepository;
     private final RestaurantRepository restaurantRepository;
 
 
-    public RestaurantService(MenuItemRepository menuItemRepository, RestaurantRepository restaurantRepository) {
+    public PlatformService(MenuItemRepository menuItemRepository, RestaurantRepository restaurantRepository) {
         this.menuItemRepository = menuItemRepository;
         this.restaurantRepository = restaurantRepository;
     }
 
     @Cacheable("restaurants")
-    public List<RestaurantDto> getRestaurants() {
-        List<RestaurantEntity> restaurantEntities = restaurantRepository.findAll();
+    public List<PlatformDto> getRestaurants() {
+        List<PlatformEntity> restaurantEntities = restaurantRepository.findAll();
         List<MenuItemEntity> menuItemEntities = menuItemRepository.findAll();
         Map<Long, List<MenuItemDto>> groupedMenuItems = new HashMap<>();
         for (MenuItemEntity menuItemEntity : menuItemEntities) {
@@ -39,10 +39,10 @@ public class RestaurantService {
             MenuItemDto menuItemDto = new MenuItemDto(menuItemEntity);
             group.add(menuItemDto);
         }
-        List<RestaurantDto> results = new ArrayList<>();
-        for (RestaurantEntity restaurantEntity : restaurantEntities) {
-            RestaurantDto restaurantDto = new RestaurantDto(restaurantEntity, groupedMenuItems.get(restaurantEntity.id()));
-            results.add(restaurantDto);
+        List<PlatformDto> results = new ArrayList<>();
+        for (PlatformEntity platformEntity : restaurantEntities) {
+            PlatformDto platformDto = new PlatformDto(platformEntity, groupedMenuItems.get(platformEntity.id()));
+            results.add(platformDto);
         }
         return results;
     }

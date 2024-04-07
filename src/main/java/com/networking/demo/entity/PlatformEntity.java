@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 
 @Table("restaurants")
-public record RestaurantEntity(
+public record PlatformEntity(
         @Id Long id,
         String name,
         String address,
