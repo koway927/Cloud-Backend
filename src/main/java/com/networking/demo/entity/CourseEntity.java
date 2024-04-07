@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 
 @Table("carts")
-public record CartEntity(
+public record CourseEntity(
         @Id Long id,
         Long customerId,
         Double totalPrice

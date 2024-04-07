@@ -1,15 +1,15 @@
 package com.networking.demo.repository;
 
-import com.networking.demo.entity.CartEntity;
+import com.networking.demo.entity.CourseEntity;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface CartRepository extends CrudRepository<CartEntity, Long> {
+public interface CartRepository extends CrudRepository<CourseEntity, Long> {
 
 
-    CartEntity getByCustomerId(Long customerId);
+    CourseEntity getByCustomerId(Long customerId);
 
 
     @Modifying

@@ -1,16 +1,16 @@
 package com.networking.demo.model;
 
 
-import com.networking.demo.entity.CartEntity;
+import com.networking.demo.entity.CourseEntity;
 
 import java.util.List;
 
-public record CartDto(
+public record CourseDto(
         Long id,
         Double totalPrice,
         List<OrderItemDto> orderItems
 ) {
-    public CartDto(CartEntity entity, List<OrderItemDto> orderItems) {
+    public CourseDto(CourseEntity entity, List<OrderItemDto> orderItems) {
         this(
                 entity.id(),
                 entity.totalPrice(),

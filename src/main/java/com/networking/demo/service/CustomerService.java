@@ -1,11 +1,10 @@
 package com.networking.demo.service;
 
 
-import com.networking.demo.entity.CartEntity;
+import com.networking.demo.entity.CourseEntity;
 import com.networking.demo.entity.CustomerEntity;
 import com.networking.demo.repository.CartRepository;
 import com.networking.demo.repository.CustomerRepository;
-import com.networking.demo.entity.CustomerEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -49,7 +48,7 @@ public class CustomerService {
 
 
         CustomerEntity savedCustomer = customerRepository.findByEmail(email);
-        CartEntity cart = new CartEntity(null, savedCustomer.id(), 0.0);
+        CourseEntity cart = new CourseEntity(null, savedCustomer.id(), 0.0);
         cartRepository.save(cart);
     }
 

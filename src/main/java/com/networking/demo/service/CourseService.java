@@ -1,10 +1,10 @@
 package com.networking.demo.service;
 
 
-import com.networking.demo.entity.CartEntity;
+import com.networking.demo.entity.CourseEntity;
 import com.networking.demo.entity.MenuItemEntity;
 import com.networking.demo.entity.OrderItemEntity;
-import com.networking.demo.model.CartDto;
+import com.networking.demo.model.CourseDto;
 import com.networking.demo.model.OrderItemDto;
 import com.networking.demo.repository.CartRepository;
 import com.networking.demo.repository.MenuItemRepository;
@@ -18,7 +18,7 @@ import java.util.*;
 
 
 @Service
-public class CartService {
+public class CourseService {
 
 
     private final CartRepository cartRepository;
@@ -26,7 +26,7 @@ public class CartService {
     private final OrderItemRepository orderItemRepository;
 
 
-    public CartService(CartRepository cartRepository, MenuItemRepository menuItemRepository, OrderItemRepository orderItemRepository) {
+    public CourseService(CartRepository cartRepository, MenuItemRepository menuItemRepository, OrderItemRepository orderItemRepository) {
         this.cartRepository = cartRepository;
         this.menuItemRepository = menuItemRepository;
         this.orderItemRepository = orderItemRepository;
@@ -35,7 +35,7 @@ public class CartService {
     @CacheEvict(cacheNames = "cart", key = "#customerId")
     @Transactional
     public void addMenuItemToCart(long customerId, long menuItemId) {
-        CartEntity cart = cartRepository.getByCustomerId(customerId);
+        CourseEntity cart = cartRepository.getByCustomerId(customerId);
         MenuItemEntity menuItem = menuItemRepository.findById(menuItemId).get();
         OrderItemEntity orderItem = orderItemRepository.findByCartIdAndMenuItemId(cart.id(), menuItem.id());
         Long orderItemId;
@@ -55,18 +55,18 @@ public class CartService {
     }
 
     @Cacheable("cart")
-    public CartDto getCart(Long customerId) {
-        CartEntity cart = cartRepository.getByCustomerId(customerId);
+    public CourseDto getCart(Long customerId) {
+        CourseEntity cart = cartRepository.getByCustomerId(customerId);
         List<OrderItemEntity> orderItems = orderItemRepository.getAllByCartId(cart.id());
         List<OrderItemDto> orderItemDtos = getOrderItemDtos(orderItems);
-        return new CartDto(cart, orderItemDtos);
+        return new CourseDto(cart, orderItemDtos);
     }
     @CacheEvict(cacheNames = "cart")
     @Transactional
     public void clearCart(Long customerId) {
-        CartEntity cartEntity = cartRepository.getByCustomerId(customerId);
-        orderItemRepository.deleteByCartId(cartEntity.id());
-        cartRepository.updateTotalPrice(cartEntity.id(), 0.0);
+        CourseEntity courseEntity = cartRepository.getByCustomerId(customerId);
+        orderItemRepository.deleteByCartId(courseEntity.id());
+        cartRepository.updateTotalPrice(courseEntity.id(), 0.0);
     }
 
 

@@ -3,13 +3,11 @@ package com.networking.demo.controller;
 
 import com.networking.demo.model.RegisterBody;
 import com.networking.demo.service.CustomerService;
+import com.networking.demo.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-
+import org.springframework.web.bind.annotation.*;
+@RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class CustomerController {
     private final CustomerService customerService;
@@ -19,6 +17,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    private final int test_variable = 8;
+    @GetMapping("/testVariable2")
+    public int getTestVariable() {
+        return test_variable;
+    }
 
     @PostMapping("/SignUp")
     @ResponseStatus(value = HttpStatus.CREATED)
