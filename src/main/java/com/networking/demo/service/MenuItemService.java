@@ -1,8 +1,8 @@
 package com.networking.demo.service;
 
 
-import com.laioffer.onlineorder.entity.MenuItemEntity;
-import com.laioffer.onlineorder.repository.MenuItemRepository;
+import com.networking.demo.entity.MenuItemEntity;
+import com.networking.demo.repository.MenuItemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

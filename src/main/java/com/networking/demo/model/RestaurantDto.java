@@ -1,5 +1,10 @@
 package com.networking.demo.model;
 
+import com.networking.demo.entity.RestaurantEntity;
+
+
+import java.util.List;
+
 
 public record RestaurantDto(
         Long id,

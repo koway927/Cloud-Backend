@@ -33,12 +33,12 @@ public class UserController {
     }
 
     // 处理获取所有用户邮箱的请求
-    @GetMapping("/emails")
-    public List<String> getAllUserEmails() {
-        return userService.getAllUsers().stream()
-                .map(User::getEmail)
-                .collect(Collectors.toList());
-    }
+//    @GetMapping("/emails")
+//    public List<String> getAllUserEmails() {
+//        return userService.getAllUsers().stream()
+//                .map(User::getEmail)
+//                .collect(Collectors.toList());
+//    }
 
 }
 

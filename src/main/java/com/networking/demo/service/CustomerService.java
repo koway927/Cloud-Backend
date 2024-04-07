@@ -1,10 +1,11 @@
 package com.networking.demo.service;
 
 
-import com.laioffer.onlineorder.entity.CartEntity;
-import com.laioffer.onlineorder.entity.CustomerEntity;
-import com.laioffer.onlineorder.repository.CartRepository;
-import com.laioffer.onlineorder.repository.CustomerRepository;
+import com.networking.demo.entity.CartEntity;
+import com.networking.demo.entity.CustomerEntity;
+import com.networking.demo.repository.CartRepository;
+import com.networking.demo.repository.CustomerRepository;
+import com.networking.demo.entity.CustomerEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;

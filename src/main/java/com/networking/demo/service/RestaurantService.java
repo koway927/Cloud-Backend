@@ -1,12 +1,12 @@
 package com.networking.demo.service;
 
 
-import com.laioffer.onlineorder.entity.MenuItemEntity;
-import com.laioffer.onlineorder.entity.RestaurantEntity;
-import com.laioffer.onlineorder.model.MenuItemDto;
-import com.laioffer.onlineorder.model.RestaurantDto;
-import com.laioffer.onlineorder.repository.MenuItemRepository;
-import com.laioffer.onlineorder.repository.RestaurantRepository;
+import com.networking.demo.entity.MenuItemEntity;
+import com.networking.demo.entity.RestaurantEntity;
+import com.networking.demo.model.MenuItemDto;
+import com.networking.demo.model.RestaurantDto;
+import com.networking.demo.repository.MenuItemRepository;
+import com.networking.demo.repository.RestaurantRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +46,7 @@ public class RestaurantService {
         }
         return results;
     }
+
 
 
 }
