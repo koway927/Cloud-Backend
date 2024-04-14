@@ -6,7 +6,7 @@ import com.networking.demo.entity.MenuItemEntity;
 import com.networking.demo.entity.OrderItemEntity;
 import com.networking.demo.model.CourseDto;
 import com.networking.demo.model.OrderItemDto;
-import com.networking.demo.repository.CartRepository;
+import com.networking.demo.repository.CourseRepository;
 import com.networking.demo.repository.MenuItemRepository;
 import com.networking.demo.repository.OrderItemRepository;
 import org.springframework.cache.annotation.CacheEvict;
@@ -21,13 +21,13 @@ import java.util.*;
 public class CourseService {
 
 
-    private final CartRepository cartRepository;
+    private final CourseRepository courseRepository;
     private final MenuItemRepository menuItemRepository;
     private final OrderItemRepository orderItemRepository;
 
 
-    public CourseService(CartRepository cartRepository, MenuItemRepository menuItemRepository, OrderItemRepository orderItemRepository) {
-        this.cartRepository = cartRepository;
+    public CourseService(CourseRepository courseRepository, MenuItemRepository menuItemRepository, OrderItemRepository orderItemRepository) {
+        this.courseRepository = courseRepository;
         this.menuItemRepository = menuItemRepository;
         this.orderItemRepository = orderItemRepository;
     }
@@ -35,7 +35,7 @@ public class CourseService {
     @CacheEvict(cacheNames = "cart", key = "#customerId")
     @Transactional
     public void addMenuItemToCart(long customerId, long menuItemId) {
-        CourseEntity cart = cartRepository.getByCustomerId(customerId);
+        CourseEntity cart = courseRepository.getByCustomerId(customerId);
         MenuItemEntity menuItem = menuItemRepository.findById(menuItemId).get();
         OrderItemEntity orderItem = orderItemRepository.findByCartIdAndMenuItemId(cart.id(), menuItem.id());
         Long orderItemId;
@@ -51,12 +51,12 @@ public class CourseService {
         }
         OrderItemEntity newOrderItem = new OrderItemEntity(orderItemId, menuItemId, cart.id(), menuItem.price(), quantity);
         orderItemRepository.save(newOrderItem);
-        cartRepository.updateTotalPrice(cart.id(), cart.totalPrice() + menuItem.price());
+        courseRepository.updateTotalPrice(cart.id(), cart.totalPrice() + menuItem.price());
     }
 
     @Cacheable("cart")
     public CourseDto getCart(Long customerId) {
-        CourseEntity cart = cartRepository.getByCustomerId(customerId);
+        CourseEntity cart = courseRepository.getByCustomerId(customerId);
         List<OrderItemEntity> orderItems = orderItemRepository.getAllByCartId(cart.id());
         List<OrderItemDto> orderItemDtos = getOrderItemDtos(orderItems);
         return new CourseDto(cart, orderItemDtos);
@@ -64,9 +64,9 @@ public class CourseService {
     @CacheEvict(cacheNames = "cart")
     @Transactional
     public void clearCart(Long customerId) {
-        CourseEntity courseEntity = cartRepository.getByCustomerId(customerId);
+        CourseEntity courseEntity = courseRepository.getByCustomerId(customerId);
         orderItemRepository.deleteByCartId(courseEntity.id());
-        cartRepository.updateTotalPrice(courseEntity.id(), 0.0);
+        courseRepository.updateTotalPrice(courseEntity.id(), 0.0);
     }
 
 

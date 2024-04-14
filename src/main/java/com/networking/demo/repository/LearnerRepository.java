@@ -9,7 +9,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import java.util.List;
 
 
-public interface CustomerRepository extends ListCrudRepository<LearnerEntity, Long> {
+public interface LearnerRepository extends ListCrudRepository<LearnerEntity, Long> {
 
 
     List<LearnerEntity> findByFirstName(String firstName);

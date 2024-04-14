@@ -16,7 +16,7 @@ public class LearnerController {
         this.learnerService = learnerService;
     }
 
-    private final int test_variable = 8;
+    private final int test_variable = 10;
     @GetMapping("/testVariable2")
     public int getTestVariable() {
         return test_variable;

@@ -5,5 +5,5 @@ import com.networking.demo.entity.PlatformEntity;
 import org.springframework.data.repository.ListCrudRepository;
 
 
-public interface RestaurantRepository extends ListCrudRepository<PlatformEntity, Long> {
+public interface PlatformRepository extends ListCrudRepository<PlatformEntity, Long> {
 }

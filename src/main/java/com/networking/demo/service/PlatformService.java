@@ -6,7 +6,7 @@ import com.networking.demo.entity.PlatformEntity;
 import com.networking.demo.model.MenuItemDto;
 import com.networking.demo.model.PlatformDto;
 import com.networking.demo.repository.MenuItemRepository;
-import com.networking.demo.repository.RestaurantRepository;
+import com.networking.demo.repository.PlatformRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +21,17 @@ public class PlatformService {
 
 
     private final MenuItemRepository menuItemRepository;
-    private final RestaurantRepository restaurantRepository;
+    private final PlatformRepository platformRepository;
 
 
-    public PlatformService(MenuItemRepository menuItemRepository, RestaurantRepository restaurantRepository) {
+    public PlatformService(MenuItemRepository menuItemRepository, PlatformRepository platformRepository) {
         this.menuItemRepository = menuItemRepository;
-        this.restaurantRepository = restaurantRepository;
+        this.platformRepository = platformRepository;
     }
 
     @Cacheable("restaurants")
     public List<PlatformDto> getRestaurants() {
-        List<PlatformEntity> restaurantEntities = restaurantRepository.findAll();
+        List<PlatformEntity> restaurantEntities = platformRepository.findAll();
         List<MenuItemEntity> menuItemEntities = menuItemRepository.findAll();
         Map<Long, List<MenuItemDto>> groupedMenuItems = new HashMap<>();
         for (MenuItemEntity menuItemEntity : menuItemEntities) {

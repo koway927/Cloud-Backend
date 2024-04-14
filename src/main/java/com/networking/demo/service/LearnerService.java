@@ -3,8 +3,8 @@ package com.networking.demo.service;
 
 import com.networking.demo.entity.CourseEntity;
 import com.networking.demo.entity.LearnerEntity;
-import com.networking.demo.repository.CartRepository;
-import com.networking.demo.repository.CustomerRepository;
+import com.networking.demo.repository.CourseRepository;
+import com.networking.demo.repository.LearnerRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,19 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class LearnerService {
 
 
-    private final CartRepository cartRepository;
-    private final CustomerRepository customerRepository;
+    private final CourseRepository courseRepository;
+    private final LearnerRepository learnerRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsManager userDetailsManager;
 
 
     public LearnerService(
-            CartRepository cartRepository,
-            CustomerRepository customerRepository,
+            CourseRepository courseRepository,
+            LearnerRepository learnerRepository,
             PasswordEncoder passwordEncoder,
             UserDetailsManager userDetailsManager) {
-        this.cartRepository = cartRepository;
-        this.customerRepository = customerRepository;
+        this.courseRepository = courseRepository;
+        this.learnerRepository = learnerRepository;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsManager = userDetailsManager;
     }
@@ -44,16 +44,16 @@ public class LearnerService {
                 .roles("USER")
                 .build();
         userDetailsManager.createUser(user);
-        customerRepository.updateNameByEmail(email, firstName, lastName);
+        learnerRepository.updateNameByEmail(email, firstName, lastName);
 
 
-        LearnerEntity savedCustomer = customerRepository.findByEmail(email);
+        LearnerEntity savedCustomer = learnerRepository.findByEmail(email);
         CourseEntity cart = new CourseEntity(null, savedCustomer.id(), 0.0);
-        cartRepository.save(cart);
+        courseRepository.save(cart);
     }
 
 
     public LearnerEntity getCustomerByEmail(String email) {
-        return customerRepository.findByEmail(email);
+        return learnerRepository.findByEmail(email);
     }
 }
