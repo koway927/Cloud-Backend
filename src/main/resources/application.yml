@@ -3,9 +3,9 @@ spring:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
   datasource:
-    url: jdbc:postgresql://${DATABASE_URL:localhost}:5432/onlineorder
+    url: jdbc:postgresql://${DATABASE_URL:netwhiz.cnmiqmq6a7jt.us-east-1.rds.amazonaws.com}:5432/NetWhiz
     username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:951369}
+    password: ${DATABASE_PASSWORD:Control-user}
 
     driver-class-name: org.postgresql.Driver
   sql:
