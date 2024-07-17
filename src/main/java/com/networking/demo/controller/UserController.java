@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class UserController {
 
 
-    private final int test_variable = 2;
+    private final int test_variable = 12;
 
     private final UserService userService;
     @GetMapping("/testVariable")
