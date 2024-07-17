@@ -20,18 +20,18 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: Login to docker hub
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u ${{secrets.RAY_DOCKERHUB_USERNAME}} -p ${{secrets.RAY_DOCKERHUB_PASSWORD}}
       - name: Build docker image
-        run: docker build -t cliu232/netwhiz-backend-cicd .
+        run: docker build -t koway927/netwhiz-backend-cicd .
       - name: Publish image to docker hub
-        run: docker push cliu232/netwhiz-backend-cicd
+        run: docker push koway927/netwhiz-backend-cicd
   deploy:
     needs: build
     runs-on: [self-hosted]
     steps:
       - name: Pull Image from docker hub
-        run: docker pull cliu232/netwhiz-backend-cicd
+        run: docker pull koway927/netwhiz-backend-cicd
       - name: Delete old container
         run: docker rm -f springbootContainer
       - name: Run docker container
-        run: docker run -d -p 8081:8081 --name springbootContainer cliu232/netwhiz-backend-cicd
+        run: docker run -d -p 8081:8081 --name springbootContainer koway927/netwhiz-backend-cicd
