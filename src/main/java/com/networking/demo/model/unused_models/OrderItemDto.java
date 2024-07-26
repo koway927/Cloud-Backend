@@ -1,8 +1,8 @@
-package com.networking.demo.model;
+package com.networking.demo.model.unused_models;
 
 
-import com.networking.demo.entity.MenuItemEntity;
-import com.networking.demo.entity.OrderItemEntity;
+import com.networking.demo.entity.unused_entities.MenuItemEntity;
+import com.networking.demo.entity.unused_entities.OrderItemEntity;
 
 public record OrderItemDto(
         Long orderItemId,

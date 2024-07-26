@@ -1,9 +1,9 @@
-package com.networking.demo.model;
+package com.networking.demo.model.unused_models;
 
-
-import com.networking.demo.entity.CourseEntity;
 
 import java.util.List;
+
+import com.networking.demo.entity.unused_entities.CourseEntity;
 
 public record CourseDto(
         Long id,

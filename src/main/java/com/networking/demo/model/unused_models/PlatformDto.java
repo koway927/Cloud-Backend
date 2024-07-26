@@ -1,9 +1,8 @@
-package com.networking.demo.model;
-
-import com.networking.demo.entity.PlatformEntity;
-
+package com.networking.demo.model.unused_models;
 
 import java.util.List;
+
+import com.networking.demo.entity.unused_entities.PlatformEntity;
 
 
 public record PlatformDto(

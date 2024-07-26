@@ -1,7 +1,7 @@
 package com.networking.demo.controller;
 
 
-import com.networking.demo.model.RegisterBody;
+import com.networking.demo.model.unused_models.RegisterBody;
 import com.networking.demo.service.LearnerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

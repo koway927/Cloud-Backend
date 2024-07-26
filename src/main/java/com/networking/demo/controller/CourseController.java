@@ -2,10 +2,11 @@ package com.networking.demo.controller;
 
 
 import com.networking.demo.entity.LearnerEntity;
-import com.networking.demo.model.AddToCartBody;
-import com.networking.demo.model.CourseDto;
-import com.networking.demo.service.CourseService;
+import com.networking.demo.model.unused_models.AddToCartBody;
+import com.networking.demo.model.unused_models.CourseDto;
 import com.networking.demo.service.LearnerService;
+import com.networking.demo.service.unused_service.CourseService;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;

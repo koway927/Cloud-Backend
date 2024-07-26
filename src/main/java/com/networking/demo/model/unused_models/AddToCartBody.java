@@ -1,4 +1,4 @@
-package com.networking.demo.model;
+package com.networking.demo.model.unused_models;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

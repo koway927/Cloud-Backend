@@ -1,10 +1,11 @@
 package com.networking.demo.service;
 
 
-import com.networking.demo.entity.CourseEntity;
 import com.networking.demo.entity.LearnerEntity;
-import com.networking.demo.repository.CourseRepository;
+import com.networking.demo.entity.unused_entities.CourseEntity;
 import com.networking.demo.repository.LearnerRepository;
+import com.networking.demo.repository.unused_repositories.CourseRepository;
+
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;

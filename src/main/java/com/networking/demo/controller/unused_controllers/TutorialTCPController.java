@@ -1,14 +1,14 @@
-package com.networking.demo.controller;
+package com.networking.demo.controller.unused_controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
-public class TutorialController {
-    @GetMapping("/tutorial")
+public class TutorialTCPController {
+    @GetMapping("/tutorial_tcp")
     public String getById() {
         System.out.println("Sringboot running");
-        return "tutorial";
-        //commit today 4.6
+        return "tutorial_tcp";
     }
 }

@@ -1,4 +1,4 @@
-package com.networking.demo.controller;
+package com.networking.demo.controller.unused_controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

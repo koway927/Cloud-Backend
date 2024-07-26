@@ -1,7 +1,8 @@
 package com.networking.demo.service;
 
-import com.networking.demo.model.User;
 import org.springframework.stereotype.Service;
+
+import com.networking.demo.model.User;
 
 import java.util.Arrays;
 import java.util.List;

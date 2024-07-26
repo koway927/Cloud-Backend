@@ -1,14 +1,15 @@
-package com.networking.demo.service;
+package com.networking.demo.service.unused_service;
 
 
-import com.networking.demo.entity.CourseEntity;
-import com.networking.demo.entity.MenuItemEntity;
-import com.networking.demo.entity.OrderItemEntity;
-import com.networking.demo.model.CourseDto;
-import com.networking.demo.model.OrderItemDto;
-import com.networking.demo.repository.CourseRepository;
-import com.networking.demo.repository.MenuItemRepository;
-import com.networking.demo.repository.OrderItemRepository;
+import com.networking.demo.entity.unused_entities.CourseEntity;
+import com.networking.demo.entity.unused_entities.MenuItemEntity;
+import com.networking.demo.entity.unused_entities.OrderItemEntity;
+import com.networking.demo.model.unused_models.CourseDto;
+import com.networking.demo.model.unused_models.OrderItemDto;
+import com.networking.demo.repository.unused_repositories.CourseRepository;
+import com.networking.demo.repository.unused_repositories.MenuItemRepository;
+import com.networking.demo.repository.unused_repositories.OrderItemRepository;
+
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

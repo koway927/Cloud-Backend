@@ -1,4 +1,4 @@
-package com.networking.demo.entity;
+package com.networking.demo.entity.unused_entities;
 
 
 import org.springframework.data.annotation.Id;

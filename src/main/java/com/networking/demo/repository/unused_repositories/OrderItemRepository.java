@@ -1,10 +1,11 @@
-package com.networking.demo.repository;
+package com.networking.demo.repository.unused_repositories;
 
 
-import com.networking.demo.entity.OrderItemEntity;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.ListCrudRepository;
+
+import com.networking.demo.entity.unused_entities.OrderItemEntity;
 
 import java.util.List;
 

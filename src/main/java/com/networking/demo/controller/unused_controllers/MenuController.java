@@ -1,10 +1,11 @@
-package com.networking.demo.controller;
+package com.networking.demo.controller.unused_controllers;
 
 
-import com.networking.demo.entity.MenuItemEntity;
-import com.networking.demo.model.PlatformDto;
-import com.networking.demo.service.MenuItemService;
-import com.networking.demo.service.PlatformService;
+import com.networking.demo.entity.unused_entities.MenuItemEntity;
+import com.networking.demo.model.unused_models.PlatformDto;
+import com.networking.demo.service.unused_service.MenuItemService;
+import com.networking.demo.service.unused_service.PlatformService;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
